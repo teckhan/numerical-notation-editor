@@ -83,11 +83,11 @@ function Notation({ offsetX, notation, paragraph }) {
     );
   };
 
-const handleChangeLyric = wrappedAction((value) => {
-  state.selectedNotationKey = "";
-  state.shouldNotationBlurAfterClick = true;
-  notation.lyric = value
-});
+  const handleChangeLyric = wrappedAction((value) => {
+    state.selectedNotationKey = "";
+    state.shouldNotationBlurAfterClick = true;
+    notation.lyric = value
+  });
 
   const renderOctave = () => {
     return composeArray(notation.octave).map((oc, i) => (
@@ -141,6 +141,9 @@ const handleChangeLyric = wrappedAction((value) => {
       >
         <Text
           editable
+          style={{
+            fontFamily: 'Noto Serif SC'
+          }}
           x={offsetX - 5}
           y={20}
           dominantBaseline="hanging"

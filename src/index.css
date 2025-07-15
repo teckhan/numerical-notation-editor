@@ -1,21 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans:100..900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+SC:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif+SC:wght@200..900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet');
 @import "tailwindcss";
 
-@font-face {
-	font-family: 'SanJiBangKaiJianTi';
-	src: local('SanJiBangKaiJianTi'),
-		url(src/assets/fonts/SanJiBangKaiJianTi-2.ttf) format('truetype');
-}
-
 body {
-	margin: 0;
-	font-family: "Noto Sans", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }

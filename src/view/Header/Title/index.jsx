@@ -22,7 +22,7 @@ function Title() {
         <Text
           editable
           style={{
-            fontFamily: "SanJiBangKaiJianTi",
+            fontFamily: "ZCOOL XiaoWei",
           }}
           x="50%"
           fontSize="32"
