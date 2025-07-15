@@ -116,17 +116,7 @@ function PopoverOnSvg({
     };
   }, [innerVisible, autoHide, changeVisibility, trigger]);
 
-  if (visible !== undefined && visible !== innerVisible) {
-    if (initFlagRef.current) {
-      changeVisibility();
-    } else {
-      setTimeout(() => {
-        // this is the first-time render, trigger dom has not mounted, so we
-        // have to delay the rendering
-        forceUpdate([]);
-      }, 0);
-    }
-  }
+  // Move state update logic to useEffect to avoid React warning
   if (trigger !== "context") {
     const box = triggerBoxRef.current;
     switch (true) {
@@ -202,6 +192,21 @@ function PopoverOnSvg({
     mergedStyles.top = lastContextCord.y;
     mergedStyles.transform = `translate(${offsetX}px, ${offsetY}px)`;
   }
+  // useEffect to sync controlled visible prop with internal state
+  useEffect(() => {
+    if (visible !== undefined && visible !== innerVisible) {
+      if (initFlagRef.current) {
+        changeVisibility();
+      } else {
+        setTimeout(() => {
+          // this is the first-time render, trigger dom has not mounted, so we
+          // have to delay the rendering
+          forceUpdate([]);
+        }, 0);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [visible, innerVisible]);
   if (darkMode) {
     popoverClassNames.push("dark");
     arrowClassNames.push("dark");
