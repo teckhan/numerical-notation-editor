@@ -170,6 +170,7 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
           width={P.maxContentWidth}
           height={height}
           fill="transparent"
+          className="hover:fill-gray-100"
         ></rect>
       </EditableContent>
     );

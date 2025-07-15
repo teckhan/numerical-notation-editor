@@ -21,7 +21,7 @@ function HelpModal({ visible, onVisibleChange }) {
       width="100%"
       height="90%"
       style={{ top: "4%" }}
-      visible={visible}
+      open={visible}
       title="帮助"
       onCancel={handleClose}
       footer={

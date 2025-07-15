@@ -1,18 +1,18 @@
-import { useEffect } from "react";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 import Editor from "./view/Editor";
 import globalStore, { GlobalContext } from "./store/global";
-import { loadExample } from "./util/load-example";
 
-// ENHANCE: 替换掉antd组件库。。一堆莫名其妙的毛病
 function App() {
-  useEffect(() => {
-    loadExample();
-  }, []);
+  const [count, setCount] = useState(0)
+
   return (
     <GlobalContext.Provider value={globalStore}>
       <Editor></Editor>
     </GlobalContext.Provider>
-  );
+  )
 }
 
-export default App;
+export default App

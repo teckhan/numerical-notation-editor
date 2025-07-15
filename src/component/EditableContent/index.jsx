@@ -1,7 +1,13 @@
-import React, { useCallback, useImperativeHandle, useState } from "react";
+import React, { useCallback, useImperativeHandle, useState, useEffect } from "react";
 import { Button, Input, Menu } from "antd";
 import PopoverOnSvg from "../PopoverOnSvg";
 import Styles from "./index.module.css";
+import state from "../../store/state"
+import { action } from "mobx"
+
+const setEditableContentVisible = action((value) => {
+  state.editableContentVisible = value
+});
 
 const EditableContent = function (
   {
@@ -31,6 +37,7 @@ const EditableContent = function (
   const handleVisibilityChange = useCallback(
     function (value) {
       setPopoverVisible(value);
+      setEditableContentVisible(value)
       if (!value) {
         setInputValue(initialValue);
       }

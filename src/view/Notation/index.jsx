@@ -83,6 +83,12 @@ function Notation({ offsetX, notation, paragraph }) {
     );
   };
 
+const handleChangeLyric = wrappedAction((value) => {
+  state.selectedNotationKey = "";
+  state.shouldNotationBlurAfterClick = true;
+  notation.lyric = value
+});
+
   const renderOctave = () => {
     return composeArray(notation.octave).map((oc, i) => (
       <circle
@@ -96,37 +102,53 @@ function Notation({ offsetX, notation, paragraph }) {
     ));
   };
   return (
-    <EditableContent
-      inputType="select"
-      popoverProps={{ trigger: "context" }}
-      overlay={getNotationContextMenu(notation, paragraph)}
-    >
-      <Row
-        editable
-        type="notation"
-        offsetX={offsetX}
-        onClick={handleClick}
-        className={
-          state.selectedNotationKey === notation.key
-            ? Styles.selectedNotation
-            : ""
-        }
+    <>
+      <EditableContent
+        inputType="select"
+        popoverProps={{ trigger: "context" }}
+        overlay={getNotationContextMenu(notation, paragraph)}
       >
-        {renderPrefixSups()}
-        {renderTopDecorators()}
-        {renderNote()}
-        {notation.dotted && (
-          <circle
-            type="dot"
-            cx={P.xWidth + 4}
-            cy="-2"
-            r="2"
-            fill="currentColor"
-          ></circle>
-        )}
-        {renderOctave()}
-      </Row>
-    </EditableContent>
+        <Row
+          editable
+          type="notation"
+          offsetX={offsetX}
+          onClick={handleClick}
+          className={
+            state.selectedNotationKey === notation.key
+              ? Styles.selectedNotation
+              : ""
+          }
+        >
+          {renderPrefixSups()}
+          {renderTopDecorators()}
+          {renderNote()}
+          {notation.dotted && (
+            <circle
+              type="dot"
+              cx={P.xWidth + 4}
+              cy="-2"
+              r="2"
+              fill="currentColor"
+            ></circle>
+          )}
+          {renderOctave()}
+        </Row>
+      </EditableContent>
+      <EditableContent
+        inputType="click"
+        initialValue={notation.lyric}
+        onChange={handleChangeLyric}
+      >
+        <Text
+          editable
+          x={offsetX - 5}
+          y={20}
+          dominantBaseline="hanging"
+        >
+          {notation.lyric ?? '    '}
+        </Text>
+      </EditableContent>
+    </>
   );
 }
 

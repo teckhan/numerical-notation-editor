@@ -21,6 +21,9 @@ function Title() {
       >
         <Text
           editable
+          style={{
+            fontFamily: "SanJiBangKaiJianTi",
+          }}
           x="50%"
           fontSize="32"
           fill="currentColor"

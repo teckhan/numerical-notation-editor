@@ -49,7 +49,7 @@ function ConfigModal({ visible, onVisibleChange }) {
   return (
     <Modal
       style={{ top: 20 }}
-      visible={visible}
+      open={visible}
       title="配置"
       onCancel={handleClose}
       footer={[

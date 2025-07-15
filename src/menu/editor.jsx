@@ -355,19 +355,21 @@ const handleKeyPress = wrappedAction((ev) => {
         break;
     }
   } else {
-    // 仅未选中符号时
-    switch (true) {
-      case ["h", "j", "k", "l"].includes(inputKey): {
-        const { notation: n } = findParagraphAndNotation(
-          state.lastSelectedNotationKey
-        );
-        state.selectedNotationKey = (
-          n || store.paragraphs?.at(0)?.notations?.at(0)
-        )?.key;
-        break;
+    if (!state.editableContentVisible) {
+      // 仅未选中符号时
+      switch (true) {
+        case ["h", "j", "k", "l"].includes(inputKey): {
+          const { notation: n } = findParagraphAndNotation(
+            state.lastSelectedNotationKey
+          );
+          state.selectedNotationKey = (
+            n || store.paragraphs?.at(0)?.notations?.at(0)
+          )?.key;
+          break;
+        }
+        default:
+          break;
       }
-      default:
-        break;
     }
   }
   // 全局
