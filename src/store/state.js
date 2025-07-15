@@ -14,6 +14,8 @@ let globalState = observable({
   helpDialogVisible: false,
   // 配置项弹窗是否可见
   configDialogVisible: false,
+  // 菜单弹窗是否可见
+  editableContentVisible: false,
   // 复制剪贴的内容
   clipboardContent: null,
 });

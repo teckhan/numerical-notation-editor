@@ -27,19 +27,5 @@
 
 已经存在很多专业还免费的五线谱编辑器，请移步[MuseScore](https://musescore.org)。
 
-## 构建
-```shell
-git clone https://github.com/mattuylee/numerical-notation-editor
-cd numerical-notation-editor && npm install
-# 运行
-npm run start
-# 编译
-npm run build
-```
-要部署Github Page，执行`npm run publish`，将会编译并复制到`docs/`。
-
 ## Q&A
 [Wiki](https://github.com/mattuylee/numerical-notation-editor/wiki)
-
-## 贡献
-欢迎提交[issue](https://github.com/mattuylee/numerical-notation-editor/issues/new)或PR。

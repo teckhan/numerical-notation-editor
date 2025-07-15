@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:300;400;700;900&display=swap');
+@import "tailwindcss";
+
+@font-face {
+	font-family: 'SanJiBangKaiJianTi';
+	src: local('SanJiBangKaiJianTi'),
+		url(src/assets/fonts/SanJiBangKaiJianTi-2.ttf) format('truetype');
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: "Noto Sans", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
