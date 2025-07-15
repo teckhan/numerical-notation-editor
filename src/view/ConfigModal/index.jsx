@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal } from "antd";
+import { Button, Form, Input, Modal, Space } from "antd";
 import { observer } from "mobx-react-lite";
 import { useCallback } from "react";
 import store from "../../store/global";
@@ -63,7 +63,7 @@ function ConfigModal({ visible, onVisibleChange }) {
     >
       <Form labelAlign="right" labelCol={{ span: 4 }}>
         <Form.Item label="画布大小">
-          <Input.Group>
+          <Space.Compact>
             <ImmediateNumberConfigInput
               propertyName="canvasWidth"
               style={{ width: "45%", textAlign: "center" }}
@@ -85,7 +85,7 @@ function ConfigModal({ visible, onVisibleChange }) {
               propertyName="canvasHeight"
               style={{ width: "45%", textAlign: "center" }}
             />
-          </Input.Group>
+          </Space.Compact>
         </Form.Item>
         <ImmediateNumberConfigItem label="顶部边距" propertyName="marginTop" />
         <ImmediateNumberConfigItem

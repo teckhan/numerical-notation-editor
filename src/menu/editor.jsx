@@ -408,13 +408,17 @@ const handleKeyPress = wrappedAction((ev) => {
       break;
   }
 });
-
-const fileMenu = (
-  <Menu>
-    <Menu.Item key="create" icon={<PlusOutlined />} onClick={handleCreate}>
-      新建
-    </Menu.Item>
-    <Menu.Item key="open" icon={<FolderOpenOutlined />}>
+const fileMenu = [
+  {
+    key: 'create',
+    icon: <PlusOutlined />,
+    label: '新建',
+    onClick: handleCreate
+  },
+  {
+    key: 'open',
+    icon: <FolderOpenOutlined />,
+    label: <div>
       打开
       <input
         onChange={handleOpenFile}
@@ -431,66 +435,133 @@ const fileMenu = (
           position: "absolute",
         }}
       />
-    </Menu.Item>
-    <Menu.Item key="save" icon={<SaveOutlined />} onClick={handleSaveFile}>
-      保存
-    </Menu.Item>
-    <Menu.Item key="export" icon={<SaveOutlined />} onClick={handleExportFile}>
-      导出为图片
-    </Menu.Item>
-  </Menu>
-);
-const editMenu = (
-  <Menu onClick={handleEditMenu}>
-    <Menu.Item key="undo" icon={<UndoOutlined />}>
-      撤销
-    </Menu.Item>
-    <Menu.Item key="redo" icon={<RedoOutlined />}>
-      重做
-    </Menu.Item>
-    <Menu.Item key="add-paragraph" icon={<MenuUnfoldOutlined />}>
-      添加段落
-    </Menu.Item>
-    <Menu.Item key="reset-title" icon={<HighlightOutlined />}>
-      重置歌曲名称
-    </Menu.Item>
-    <Menu.Item key="reset-authors" icon={<HighlightOutlined />}>
-      重置作者信息
-    </Menu.Item>
-  </Menu>
-);
+    </div>,
+  },
+  {
+    key: 'save',
+    icon: <SaveOutlined />,
+    label: '保存',
+    onClick: handleSaveFile
+  },
+  {
+    key: 'export',
+    icon: <SaveOutlined />,
+    label: '导出为图片',
+    onClick: handleExportFile
+  },
+];
+const editMenu = [
+  {
+    key: "undo",
+    icon: <UndoOutlined />,
+    label: "撤销",
+    onClick: handleEditMenu,
+  },
+  {
+    key: "redo",
+    icon: <RedoOutlined />,
+    label: "重做",
+    onClick: handleEditMenu,
+  },
+  {
+    key: "add-paragraph",
+    icon: <MenuUnfoldOutlined />,
+    label: "添加段落",
+    onClick: handleEditMenu,
+  },
+  {
+    key: "reset-title",
+    icon: <HighlightOutlined />,
+    label: "重置歌曲名称",
+    onClick: handleEditMenu,
+  },
+  {
+    key: "reset-authors",
+    icon: <HighlightOutlined />,
+    label: "重置作者信息",
+    onClick: handleEditMenu,
+  },
+];
 
-const convertMenu = (
-  <Menu key="tone" onClick={handleConvertMenu}>
-    <SubMenu key="convertTo" title="转到...">
-      <Menu.Item key="convertTo-C">1 = C</Menu.Item>
-      <Menu.Item key="convertTo-D">1 = D</Menu.Item>
-      <Menu.Item key="convertTo-E">1 = E</Menu.Item>
-      <Menu.Item key="convertTo-F">1 = F</Menu.Item>
-      <Menu.Item key="convertTo-G">1 = G</Menu.Item>
-      <Menu.Item key="convertTo-A">1 = A</Menu.Item>
-      <Menu.Item key="convertTo-B">1 = B</Menu.Item>
-      <Menu.Item key="convertTo-♭D">
-        1 = <sup>♭</sup>D
-      </Menu.Item>
-      <Menu.Item key="convertTo-♭E">
-        1 = <sup>♭</sup>E
-      </Menu.Item>
-      <Menu.Item key="convertTo-♭G">
-        1 = <sup>♭</sup>G
-      </Menu.Item>
-      <Menu.Item key="convertTo-♭A">
-        1 = <sup>♭</sup>A
-      </Menu.Item>
-      <Menu.Item key="convertTo-♭B">
-        1 = <sup>♭</sup>B
-      </Menu.Item>
-    </SubMenu>
-    <Menu.Item key="convert-up">升高一个音</Menu.Item>
-    <Menu.Item key="convert-down">降低一个音</Menu.Item>
-    <Menu.Item key="convert-up8">升高一个八度</Menu.Item>
-    <Menu.Item key="convert-down8">降低一个八度</Menu.Item>
-  </Menu>
-);
+const convertMenu = [
+  {
+    key: "convertTo",
+    label: "转到...",
+    children: [
+      { key: "convertTo-C", label: "1 = C", onClick: handleConvertMenu },
+      { key: "convertTo-D", label: "1 = D", onClick: handleConvertMenu },
+      { key: "convertTo-E", label: "1 = E", onClick: handleConvertMenu },
+      { key: "convertTo-F", label: "1 = F", onClick: handleConvertMenu },
+      { key: "convertTo-G", label: "1 = G", onClick: handleConvertMenu },
+      { key: "convertTo-A", label: "1 = A", onClick: handleConvertMenu },
+      { key: "convertTo-B", label: "1 = B", onClick: handleConvertMenu },
+      {
+        key: "convertTo-♭D",
+        label: (
+          <span>
+            1 = <sup>♭</sup>D
+          </span>
+        ),
+        onClick: handleConvertMenu,
+      },
+      {
+        key: "convertTo-♭E",
+        label: (
+          <span>
+            1 = <sup>♭</sup>E
+          </span>
+        ),
+        onClick: handleConvertMenu,
+      },
+      {
+        key: "convertTo-♭G",
+        label: (
+          <span>
+            1 = <sup>♭</sup>G
+          </span>
+        ),
+        onClick: handleConvertMenu,
+      },
+      {
+        key: "convertTo-♭A",
+        label: (
+          <span>
+            1 = <sup>♭</sup>A
+          </span>
+        ),
+        onClick: handleConvertMenu,
+      },
+      {
+        key: "convertTo-♭B",
+        label: (
+          <span>
+            1 = <sup>♭</sup>B
+          </span>
+        ),
+        onClick: handleConvertMenu,
+      },
+    ],
+  },
+  {
+    key: "convert-up",
+    label: "升高一个音",
+    onClick: handleConvertMenu,
+  },
+  {
+    key: "convert-down",
+    label: "降低一个音",
+    onClick: handleConvertMenu,
+  },
+  {
+    key: "convert-up8",
+    label: "升高一个八度",
+    onClick: handleConvertMenu,
+  },
+  {
+    key: "convert-down8",
+    label: "降低一个八度",
+    onClick: handleConvertMenu,
+  },
+];
 
 export { fileMenu, editMenu, convertMenu, handleKeyPress, handleClick };

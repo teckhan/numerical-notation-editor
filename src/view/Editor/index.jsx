@@ -1,4 +1,4 @@
-import { Button, Dropdown } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import {
   EditOutlined,
   FileTextOutlined,
@@ -73,17 +73,17 @@ function Editor() {
           className={Styles.header}
           style={{ width: store.canvasWidth + "px" }}
         >
-          <Dropdown overlay={fileMenu} placement="bottomLeft">
+          <Dropdown menu={{ items: fileMenu }} placement="bottomLeft">
             <Button icon={<FileTextOutlined />} type="text">
               文件
             </Button>
           </Dropdown>
-          <Dropdown overlay={editMenu} placement="bottomLeft">
+          <Dropdown menu={{ items: editMenu }} placement="bottomLeft">
             <Button icon={<EditOutlined />} type="text">
               编辑
             </Button>
           </Dropdown>
-          <Dropdown overlay={convertMenu} placement="bottomLeft">
+          <Dropdown menu={{ items: convertMenu }} placement="bottomLeft">
             <Button icon={<RetweetOutlined />} type="text">
               转调
             </Button>
