@@ -38,30 +38,32 @@ const getNotationContextMenu = (notation, paragraph) => {
     }
   });
 
-  return (
-    // ENHANCE: 分音符类型显示菜单项
-    <Menu onClick={handleMenu} style={{ minWidth: "80px" }}>
-      {isNote(notation) && (
-        <Menu.Item key="break-underline" icon={<StopOutlined />}>
-          {notation.breakUnderline
-            ? "在此处延续增减时线"
-            : "在此处打断增减时线"}
-        </Menu.Item>
-      )}
-      {isNote(notation) && (
-        <Menu.Item
-          key="tie"
-          icon={<RadiusSettingOutlined />}
-          notation={notation}
-        >
-          {notation.tieTo ? "删除连音线" : "从此处添加连音线到..."}
-        </Menu.Item>
-      )}
-      <Menu.Item key="delete" icon={<DeleteOutlined />}>
-        删除符号
-      </Menu.Item>
-    </Menu>
-  );
+  // Build items array instead of JSX children
+  const items = [];
+  if (isNote(notation)) {
+    items.push({
+      key: "break-underline",
+      icon: <StopOutlined />,
+      label: notation.breakUnderline
+        ? "在此处延续增减时线"
+        : "在此处打断增减时线",
+      onClick: handleMenu,
+    });
+    items.push({
+      key: "tie",
+      icon: <RadiusSettingOutlined />,
+      label: notation.tieTo ? "删除连音线" : "从此处添加连音线到...",
+      onClick: handleMenu,
+    });
+  }
+  items.push({
+    key: "delete",
+    icon: <DeleteOutlined />,
+    label: "删除符号",
+    onClick: handleMenu,
+  });
+
+  return <Menu items={items} style={{ minWidth: "80px" }} />;
 };
 
 // ENHANCE: 使用EditableContent组件的overlay属性传入菜单

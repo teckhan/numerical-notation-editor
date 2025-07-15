@@ -37,16 +37,23 @@ function getParagraphMenuOptions(paragraph) {
     }
   });
 
-  return (
-    <Menu onClick={handleMenu}>
-      <Menu.Item key="add" icon={<EnterOutlined />}>
-        添加段落
-      </Menu.Item>
-      <Menu.Item danger key="delete" icon={<DeleteOutlined />}>
-        删除段落
-      </Menu.Item>
-    </Menu>
-  );
+  const items = [
+    {
+      key: "add",
+      icon: <EnterOutlined />,
+      label: "添加段落",
+      onClick: handleMenu,
+    },
+    {
+      key: "delete",
+      icon: <DeleteOutlined />,
+      label: "删除段落",
+      danger: true,
+      onClick: handleMenu,
+    },
+  ];
+
+  return <Menu items={items} />;
 }
 
 export { getParagraphMenuOptions };

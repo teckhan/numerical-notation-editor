@@ -93,23 +93,22 @@ const EditableContent = function (
       return <div onClick={handleHideContextMenu}>{overlay}</div>;
     }
     return (
-      <Menu className={Styles.menu}>
-        {(options || [])
-          .filter((op) => op.visible !== false)
-          .map((option) => (
-            <Menu.Item
-              icon={option.icon}
-              key={option.key}
-              className={
+      <Menu
+        className={Styles.menu}
+        items={
+          (options || [])
+            .filter((op) => op.visible !== false)
+            .map((option) => ({
+              icon: option.icon,
+              key: option.key,
+              className:
                 Styles.menuItem +
-                (option.key === initialValue ? " selected" : "")
-              }
-              onClick={() => handleConfirm(option.key)}
-            >
-              {option.text}
-            </Menu.Item>
-          ))}
-      </Menu>
+                (option.key === initialValue ? " selected" : ""),
+              label: option.text,
+              onClick: () => handleConfirm(option.key),
+            }))
+        }
+      />
     );
   }, [initialValue, options, handleConfirm, handleHideContextMenu, overlay]);
   let renderContent, renderPopover;
