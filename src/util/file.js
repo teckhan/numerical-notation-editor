@@ -24,13 +24,41 @@ async function loadFile(file) {
   resetGlobalData(data);
 }
 
-function saveFile() {
-  const data = new Blob([JSON.stringify(toJS(store))], {
-    type: "application/json",
-  });
+async function saveFile() {
+  const content = JSON.stringify(toJS(store), null, 2);
+  const filename = (store.title || "未标题") + ".json";
+
+  // Check for File System Access API support
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: filename,
+        types: [
+          {
+            description: 'JSON File',
+            accept: { 'application/json': ['.json'] },
+          },
+        ],
+      });
+      const writable = await handle.createWritable();
+      await writable.write(content);
+      await writable.close();
+      return;
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        // User canceled Save As dialog — do nothing
+        return;
+      }
+      // Only fallback if error is not user cancellation
+      console.warn("File System API failed, falling back:", err);
+    }
+  }
+
+  // Fallback download
+  const blob = new Blob([content], { type: "application/json" });
   const downloadLink = document.createElement("a");
-  downloadLink.download = (store.title || "未标题") + ".json";
-  downloadLink.href = URL.createObjectURL(data);
+  downloadLink.download = filename;
+  downloadLink.href = URL.createObjectURL(blob);
   downloadLink.click();
   URL.revokeObjectURL(downloadLink.href);
 }

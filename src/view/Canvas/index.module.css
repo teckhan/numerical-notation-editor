@@ -1,8 +1,9 @@
 .svg {
   border: 1px solid ghostwhite;
-  box-shadow: ghostwhite 0px 0px 10px;
+  box-shadow: rgba(0, 0, 0, .15) 0px 20px 50px 5px;
   font-size: 16px;
 }
+
 .svg :global(text) {
   user-select: none;
 }

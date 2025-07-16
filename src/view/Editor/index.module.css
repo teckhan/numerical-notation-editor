@@ -2,11 +2,14 @@
   margin-bottom: 16px;
   border-bottom: 1px solid whitesmoke;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, .05) 0px 0px 10px 3px;
 }
+
 .header {
-   margin: auto;
-   padding: 8px 0;
+  margin: auto;
+  padding: 8px 0;
 }
+
 .container {
   display: flex;
   flex-direction: column;
