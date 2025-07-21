@@ -9,8 +9,13 @@ export default function Text({ children, editable, ...props }) {
         style={
           editable
             ? {
-                cursor: "pointer",
-              }
+              cursor: "pointer",
+            }
+            : null
+        }
+        className={
+          editable
+            ? 'hover:text-orange-400'
             : null
         }
         dominantBaseline="hanging"
@@ -29,8 +34,13 @@ export default function Text({ children, editable, ...props }) {
       style={
         editable
           ? {
-              cursor: "pointer",
-            }
+            cursor: "pointer",
+          }
+          : null
+      }
+      className={
+        editable
+          ? 'hover:text-orange-400'
           : null
       }
       dominantBaseline="hanging"

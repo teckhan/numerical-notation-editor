@@ -9,6 +9,7 @@ import P, {
   calcParagraphWidth,
 } from "../../util/placement";
 import { getParagraphMenuOptions } from "../../menu/paragraph";
+import Chord from "../Chord";
 import Notation from "../Notation";
 import Row from "../Row";
 
@@ -170,7 +171,6 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
           width={P.maxContentWidth}
           height={height}
           fill="transparent"
-          className="hover:fill-gray-100"
         ></rect>
       </EditableContent>
     );
@@ -179,6 +179,19 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
   return (
     <Row type="paragraph" offsetY={offsetY}>
       {renderParagraphMask()}
+      {
+        paragraph.notations.find(n => n.chord)
+          ? <Row offsetY={-offsetY - 32}>
+            {paragraph.notations.map((n, i) => (
+              <Chord
+                key={n.key}
+                notation={n}
+                offsetX={noteOffsets[i]}
+              />
+            ))}
+          </Row>
+          : null
+      }
       {renderTies()}
       {paragraph.notations.map((n, i) => (
         <Notation

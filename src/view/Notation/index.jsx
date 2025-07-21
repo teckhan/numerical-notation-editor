@@ -19,7 +19,7 @@ function composeArray(octave) {
 }
 
 function Notation({ offsetX, notation, paragraph }) {
-  const handleClick = wrappedAction(() => {
+  const handleChangeNote = wrappedAction(() => {
     state.selectedNotationKey = notation.key;
     state.shouldNotationBlurAfterClick = false;
     placeTie(notation);
@@ -112,7 +112,7 @@ function Notation({ offsetX, notation, paragraph }) {
           editable
           type="notation"
           offsetX={offsetX}
-          onClick={handleClick}
+          onClick={handleChangeNote}
           className={
             state.selectedNotationKey === notation.key
               ? Styles.selectedNotation
@@ -147,8 +147,13 @@ function Notation({ offsetX, notation, paragraph }) {
           x={offsetX - 5}
           y={20}
           dominantBaseline="hanging"
+          className={
+            notation.lyric
+              ? null
+              : 'text-transparent hover:text-orange-400'
+          }
         >
-          {notation.lyric ?? '    '}
+          {notation.lyric ?? '█'}
         </Text>
       </EditableContent>
     </>

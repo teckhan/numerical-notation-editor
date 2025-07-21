@@ -12,8 +12,8 @@ function getParagraphMenuOptions(paragraph) {
         const idx = store.paragraphs.findIndex((p) => p.key === paragraph.key);
         const para = createParagraph({
           notations: [
-            createNotation({ note: "0" }),
-            createNotation({ note: "0" }),
+            createNotation({ note: "0", lyric: "歌", chord: "C" }),
+            createNotation({ note: "0", lyric: "词" }),
             createNotation({ note: "0" }),
             createNotation({ note: "0" }),
             createNotation({ note: notations.separator }),

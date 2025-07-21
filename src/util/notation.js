@@ -52,6 +52,9 @@ function createNotation(initial) {
     prefixSups: [],
     topDecorators: [],
     tieTo: null,
+    lyric: "",
+    chord: ""
+
   };
   if (initial) {
     Object.assign(n, initial);

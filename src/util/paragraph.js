@@ -19,8 +19,8 @@ function createParagraph(initial) {
 function createParagraphWithNotations() {
   return createParagraph({
     notations: [
-      createNotation({ note: "0" }),
-      createNotation({ note: "0" }),
+      createNotation({ note: "0", lyric: "歌", chord: "C" }),
+      createNotation({ note: "0", lyric: "词" }),
       createNotation({ note: "0" }),
       createNotation({ note: "0" }),
       createNotation({ note: N.separator }),
