@@ -12,6 +12,7 @@ const initialData = {
   defaultFontSize: 16,
   defaultSubFontSize: 12,
   title: "无标题",
+  subtitle: "无副标题",
   tone: "C",
   marginHorizontal: 64,
   marginTop: 32,
