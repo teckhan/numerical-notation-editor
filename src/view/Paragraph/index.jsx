@@ -8,7 +8,9 @@ import P, {
   calcParagraphAboveOffset,
   calcParagraphWidth,
 } from "../../util/placement";
+import { isSeparator } from '../../util/notation'
 import { getParagraphMenuOptions } from "../../menu/paragraph";
+import Section from "../Section";
 import Chord from "../Chord";
 import Notation from "../Notation";
 import Lyric from "../Lyric";
@@ -178,21 +180,43 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
     );
   };
 
+  const sectionOffsetY = 0
+  const chordOffsetY = paragraph.notations.find(n => n.chord) ? 36 : 0
+  const notationOffsetY = chordOffsetY + (paragraph.notations.find(n => n.chord) ? 36 : 0)
+  const lyricOffsetY = notationOffsetY + (paragraph.notations.find(n => n.lyric) ? 20 : 0)
+
   return (
     <Row type="paragraph" offsetY={offsetY}>
       {
-        paragraph.notations.find(n => n.chord)
-          ? paragraph.notations.map((n, i) => (
-            <Chord
-              key={n.key}
-              notation={n}
-              offsetX={noteOffsets[i]}
-            />
-          ))
+        paragraph.notations.find(n => n.section)
+          ? <Row offsetY={sectionOffsetY}>
+            {paragraph.notations.map((n, i) => (
+              <Section
+                key={n.key}
+                notation={n}
+                offsetX={noteOffsets[i]}
+                editable={n.section || i === 0 || isSeparator(paragraph.notations[i - 1]?.note)}
+              />
+            ))}
+          </Row>
           : null
       }
 
-      <Row offsetY={paragraph.notations.find(n => n.chord) ? 36 : 0}>
+      {
+        paragraph.notations.find(n => n.chord)
+          ? <Row offsetY={chordOffsetY}>
+            {paragraph.notations.map((n, i) => (
+              <Chord
+                key={n.key}
+                notation={n}
+                offsetX={noteOffsets[i]}
+              />
+            ))}
+          </Row>
+          : null
+      }
+
+      <Row offsetY={notationOffsetY}>
         {renderParagraphNotationMask()}
         {renderTies()}
         {paragraph.notations.map((n, i) => (
@@ -208,7 +232,7 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
 
       {
         paragraph.notations.find(n => n.lyric)
-          ? <Row offsetY={36 + 20}>
+          ? <Row offsetY={lyricOffsetY}>
             {paragraph.notations.map((n, i) => (
               <Lyric
                 key={n.key}

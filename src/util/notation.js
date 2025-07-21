@@ -52,6 +52,7 @@ function createNotation(initial) {
     prefixSups: [],
     topDecorators: [],
     tieTo: null,
+    section: "",
     lyric: "",
     chord: ""
 
