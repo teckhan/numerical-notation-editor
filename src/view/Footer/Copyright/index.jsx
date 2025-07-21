@@ -5,19 +5,19 @@ import store from "../../../store/global";
 import { wrappedAction } from "../../../store/history";
 import Row from "../../Row";
 import Text from "../../Text";
-const handleChangeSubtitle = wrappedAction((value) => {
-  store.subtitle = value;
+const handleChangeCopyright = wrappedAction((value) => {
+  store.copyright = value;
 });
 
-function Subtitle() {
+function Copyright() {
   const ref = useRef();
   return (
-    <Row type="title" offsetY={store.marginTop + 32}>
+    <Row type="title" offsetY={store.canvasHeight - store.marginTop - store.defaultSubFontSize}>
       <EditableContent
         ref={ref}
-        title="副标题："
-        initialValue={store.subtitle}
-        onChange={handleChangeSubtitle}
+        title="版权："
+        initialValue={store.copyright}
+        onChange={handleChangeCopyright}
       >
         <Text
           editable
@@ -25,16 +25,16 @@ function Subtitle() {
           style={{
             fontWeight: 300,
           }}
-          fontSize="16"
+          fontSize={store.defaultSubFontSize}
           fill="currentColor"
           stroke="none"
           textAnchor="middle"
         >
-          {store.subtitle}
+          {store.copyright}
         </Text>
       </EditableContent>
     </Row>
   );
 }
 
-export default observer(Subtitle);
+export default observer(Copyright);

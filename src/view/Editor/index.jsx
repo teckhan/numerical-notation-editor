@@ -25,6 +25,7 @@ import { unwrappedAction } from "../../store/history";
 import Canvas from "../Canvas";
 import ConfigModal from "../ConfigModal";
 import Header from "../Header";
+import Footer from "../Footer";
 import HelpModal from "../HelpModal";
 import Paragraph from "../Paragraph";
 import Row from "../Row";
@@ -122,6 +123,7 @@ function Editor() {
             );
           })}
         </Row>
+        <Footer />
       </Canvas>
       <ConfigModal
         visible={state.configDialogVisible}

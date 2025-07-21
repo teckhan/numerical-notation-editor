@@ -24,6 +24,7 @@ const initialData = {
   speed: 75,
   authors: ["佚名  作词", "简谱编辑器  制谱"],
   notations: [],
+  copyright: "©️ 版权所有",
 };
 
 function getDefaultGlobalData() {
