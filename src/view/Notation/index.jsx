@@ -77,7 +77,7 @@ function Notation({ offsetX, notation, paragraph }) {
       transform = "scale(0.8, 1)";
     }
     return (
-      <Text dominantBaseline="middle" textAnchor="middle" transform={transform}>
+      <Text className="font-medium" dominantBaseline="middle" textAnchor="middle" transform={transform}>
         {notation.note}
       </Text>
     );
@@ -141,19 +141,16 @@ function Notation({ offsetX, notation, paragraph }) {
       >
         <Text
           editable
-          style={{
-            fontFamily: 'Noto Serif SC'
-          }}
           x={offsetX - 5}
           y={20}
           dominantBaseline="hanging"
           className={
             notation.lyric
-              ? null
-              : 'text-transparent hover:text-orange-400'
+              ? 'font-semibold'
+              : 'font-semibold text-transparent hover:text-orange-400'
           }
         >
-          {notation.lyric ?? '█'}
+          {notation.lyric || '＋'}
         </Text>
       </EditableContent>
     </>

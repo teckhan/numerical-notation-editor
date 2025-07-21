@@ -23,6 +23,7 @@ function Title() {
           editable
           style={{
             fontFamily: "ZCOOL XiaoWei",
+            fontWeight: 'bold'
           }}
           x="50%"
           fontSize="32"

@@ -181,7 +181,7 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
       {renderParagraphMask()}
       {
         paragraph.notations.find(n => n.chord)
-          ? <Row offsetY={-offsetY - 32}>
+          ? <Row>
             {paragraph.notations.map((n, i) => (
               <Chord
                 key={n.key}
@@ -192,16 +192,18 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
           </Row>
           : null
       }
-      {renderTies()}
-      {paragraph.notations.map((n, i) => (
-        <Notation
-          key={n.key}
-          notation={n}
-          paragraph={paragraph}
-          offsetX={noteOffsets[i]}
-        />
-      ))}
-      {renderUnderlines()}
+      <Row type="paragraph" offsetY={paragraph.notations.find(n => n.chord) ? 36 : 0}>
+        {renderTies()}
+        {paragraph.notations.map((n, i) => (
+          <Notation
+            key={n.key}
+            notation={n}
+            paragraph={paragraph}
+            offsetX={noteOffsets[i]}
+          />
+        ))}
+        {renderUnderlines()}
+      </Row>
     </Row>
   );
 }

@@ -23,7 +23,7 @@ function Subtitle() {
           editable
           x="50%"
           style={{
-            fontWeight: 300,
+            fontWeight: 'light',
           }}
           fontSize="16"
           fill="currentColor"

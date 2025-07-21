@@ -23,7 +23,7 @@ function Copyright() {
           editable
           x="50%"
           style={{
-            fontWeight: 300,
+            fontWeight: 'light',
           }}
           fontSize={store.defaultSubFontSize}
           fill="currentColor"

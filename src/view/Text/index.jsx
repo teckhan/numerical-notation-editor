@@ -15,12 +15,11 @@ export default function Text({ children, editable, ...props }) {
         }
         className={
           editable
-            ? 'hover:text-orange-400'
-            : null
+            ? 'hover:text-orange-400 font-semibold'
+            : 'font-semibold'
         }
         dominantBaseline="hanging"
         stroke="none"
-        fontWeight="bold"
         fill="currentColor"
         dangerouslySetInnerHTML={{ __html: escapeHtml(children) }}
         {...props}
@@ -40,12 +39,11 @@ export default function Text({ children, editable, ...props }) {
       }
       className={
         editable
-          ? 'hover:text-orange-400'
-          : null
+          ? 'hover:text-orange-400 font-semibold'
+          : 'font-semibold'
       }
       dominantBaseline="hanging"
       stroke="none"
-      fontWeight="bold"
       fill="currentColor"
       {...props}
     >

@@ -21,9 +21,6 @@ function Chord({ offsetX, notation }) {
       >
         <Text
           editable
-          style={{
-            fontFamily: 'Noto Serif SC'
-          }}
           x={offsetX - 5}
           y={0}
           className={
@@ -32,7 +29,7 @@ function Chord({ offsetX, notation }) {
               : 'text-transparent hover:text-orange-400'
           }
         >
-          {notation.chord ?? '█'}
+          {notation.chord || '＋'}
         </Text>
       </EditableContent>
     </>

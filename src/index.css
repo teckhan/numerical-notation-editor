@@ -3,7 +3,8 @@
 
 body {
   margin: 0;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", "Noto Serif SC", sans-serif;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
