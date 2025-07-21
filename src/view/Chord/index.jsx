@@ -21,8 +21,7 @@ function Chord({ offsetX, notation }) {
       >
         <Text
           editable
-          x={offsetX - 5}
-          y={0}
+          x={offsetX - (notation.chord ? 5 : 8)}
           className={
             notation.chord
               ? null

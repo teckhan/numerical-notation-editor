@@ -23,8 +23,8 @@ function Lyric({ offsetX, notation }) {
         dominantBaseline="hanging"
         className={
           notation.lyric
-            ? 'font-semibold'
-            : 'font-semibold text-transparent hover:text-orange-400'
+            ? ''
+            : 'text-transparent'
         }
       >
         {notation.lyric || '＋'}
