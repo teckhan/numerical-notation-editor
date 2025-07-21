@@ -15,6 +15,9 @@ const notations = {
   si: "7",
   extend: "─",
   separator: "│",
+  separatorEnd: "‖",
+  separatorOpen: ":‖",
+  separatorClose: "‖:",
   crackerOpen: "(",
   crackerClose: ")",
 };
@@ -28,7 +31,12 @@ const notes = [
   notations.la,
   notations.si,
 ];
-const separators = ["│", "‖"];
+const separators = [
+  notations.separator,
+  notations.separatorEnd,
+  notations.separatorOpen,
+  notations.separatorClose
+];
 
 function isNote(notationOrNote) {
   return notes.includes(notationOrNote?.note || notationOrNote);

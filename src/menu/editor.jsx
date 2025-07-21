@@ -140,9 +140,23 @@ const handleKeyPress = wrappedAction((ev) => {
       case inputKey === "-" && !ctrl && !shift:
         notation.note = N.extend;
         break;
+
       case inputKey === "|" && !ctrl:
+        if (notation.note === N.separator) {
+          notation.note = N.separatorEnd
+          break;
+        }
+        if (notation.note === N.separatorEnd) {
+          notation.note = N.separatorOpen
+          break;
+        }
+        if (notation.note === N.separatorOpen) {
+          notation.note = N.separatorClose
+          break;
+        }
         notation.note = N.separator;
         break;
+
       case inputKey === "u" && !ctrl && !shift:
         notation.underline += 1;
         break;
