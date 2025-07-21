@@ -140,7 +140,7 @@ function calcParagraphContentHeight(paragraph) {
   // 段落高度不是最高的音符的高度，而是上边偏移最大的音符的上部分偏移量+下边偏移最
   // 大的音符的下部分偏移量
   const chordHeight = notations.filter((n) => n.chord).length > 0 ? 40 : 0
-  const lyricHeight = notations.filter((n) => n.chord).length > 0 ? 32 : 0
+  const lyricHeight = notations.filter((n) => n.lyric).length > 0 ? 32 : 0
   const noteHeightMap = notations.map((n) => chordHeight + calcNotationHeight(n) + lyricHeight);
   const aboveOffsetMap = notations.map((n) => calcNotationAboveOffset(n));
   const belowOffsetMap = noteHeightMap.map((v, i) => v - aboveOffsetMap[i]);
@@ -266,6 +266,7 @@ function calcNotationHeight(notation) {
 export default placement;
 export {
   calcNotationWidth,
+  calcNotationHeight,
   calcNotationPrefixOffset,
   calcNotationAboveOffset,
   calcParagraphWidth,

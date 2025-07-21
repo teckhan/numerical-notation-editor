@@ -1,16 +1,17 @@
 import { observer } from "mobx-react-lite";
 import EditableContent from "../../component/EditableContent";
 import P, {
+  calcNotationHeight,
   calcNotationAboveOffset,
   calcNotationPrefixOffset,
   calcNotationWidth,
   calcParagraphAboveOffset,
-  calcParagraphContentHeight,
   calcParagraphWidth,
 } from "../../util/placement";
 import { getParagraphMenuOptions } from "../../menu/paragraph";
 import Chord from "../Chord";
 import Notation from "../Notation";
+import Lyric from "../Lyric";
 import Row from "../Row";
 
 function Paragraph({ paragraph, offsetY, alignJustify }) {
@@ -158,8 +159,9 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
     return ties;
   };
 
-  const renderParagraphMask = () => {
-    const height = calcParagraphContentHeight(paragraph);
+  const renderParagraphNotationMask = () => {
+    const heightMap = paragraph.notations.map((notation) => calcNotationHeight(notation))
+    const height = Math.max(...heightMap)
     return (
       <EditableContent
         inputType="select"
@@ -178,21 +180,20 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
 
   return (
     <Row type="paragraph" offsetY={offsetY}>
-      {renderParagraphMask()}
       {
         paragraph.notations.find(n => n.chord)
-          ? <Row>
-            {paragraph.notations.map((n, i) => (
-              <Chord
-                key={n.key}
-                notation={n}
-                offsetX={noteOffsets[i]}
-              />
-            ))}
-          </Row>
+          ? paragraph.notations.map((n, i) => (
+            <Chord
+              key={n.key}
+              notation={n}
+              offsetX={noteOffsets[i]}
+            />
+          ))
           : null
       }
-      <Row type="paragraph" offsetY={paragraph.notations.find(n => n.chord) ? 36 : 0}>
+
+      <Row offsetY={paragraph.notations.find(n => n.chord) ? 36 : 0}>
+        {renderParagraphNotationMask()}
         {renderTies()}
         {paragraph.notations.map((n, i) => (
           <Notation
@@ -204,6 +205,20 @@ function Paragraph({ paragraph, offsetY, alignJustify }) {
         ))}
         {renderUnderlines()}
       </Row>
+
+      {
+        paragraph.notations.find(n => n.lyric)
+          ? <Row offsetY={36 + 20}>
+            {paragraph.notations.map((n, i) => (
+              <Lyric
+                key={n.key}
+                notation={n}
+                offsetX={noteOffsets[i]}
+              />
+            ))}
+          </Row>
+          : null
+      }
     </Row>
   );
 }
