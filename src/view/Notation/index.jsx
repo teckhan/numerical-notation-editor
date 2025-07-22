@@ -77,7 +77,7 @@ function Notation({ offsetX, notation, paragraph }) {
       transform = "scale(0.8, 1)";
     }
     return (
-      <Text className="font-medium" dominantBaseline="middle" textAnchor="middle" transform={transform}>
+      <Text className="font-medium" style={{ fontFamily: 'Noto Music' }} dominantBaseline="middle" textAnchor="middle" transform={transform}>
         {notation.note}
       </Text>
     );

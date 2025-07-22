@@ -16,8 +16,8 @@ const notations = {
   extend: "─",
   separator: "│",
   separatorEnd: "‖",
-  separatorOpen: ":‖",
-  separatorClose: "‖:",
+  separatorOpen: "𝄇",
+  separatorClose: "𝄆",
   crackerOpen: "(",
   crackerClose: ")",
 };
